@@ -87,10 +87,10 @@
 							
 
 						td.text-end
-
-							if (sort != "asc" && blockIndex == 0 && offset == 0 && timeAgoTime > (15 * 60 * 1000))
+							- console.log("timeAgoTime: ", timeAgoTime);
+							if (sort != "asc" && blockIndex == 0 && offset == 0 && timeAgoTime > (1.5 * 60 * 1000))
 								- var timeAgoTime = block.time;
-								span.text-danger.border-dotted(title="It's been > 15 min since this latest block.", data-bs-toggle="tooltip")
+								span.text-danger.border-dotted(title="It's been > 1:30 min since this latest block.", data-bs-toggle="tooltip")
 									include ./time-ago-text.pug
 							else
 								- var timeAgoTime = block.time;
@@ -99,9 +99,9 @@
 						td.text-end.d-none.d-sm-table-cell
 							if (timeDiff)
 								- var colorClass = "";
-								if (timeDiff < 300000)
+								if (timeDiff < 30000)
 									- var colorClass = "text-success";
-								if (timeDiff > 900000)
+								if (timeDiff > 90000)
 									- var colorClass = "text-danger";
 
 								span(class=colorClass)
